@@ -5,7 +5,7 @@ Install [Node.js](https://nodejs.org)
 Run: npm init
 
 ## How to start the application for development
-Run: node app.js
+Run: npm start
 
 ## How to build the applicaton as docker image
 Run: docker build -t justone:1.0.0 .
