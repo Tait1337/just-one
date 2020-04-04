@@ -1,0 +1,10 @@
+{
+    "name": "just-one",
+    "version": "1.0.0",
+    "description": "Just One online",
+    "dependencies": {
+        "express": "^4.17.1",
+        "serve-favicon": "^2.5.0",
+        "socket.io": "^2.3.0"
+    }
+}
