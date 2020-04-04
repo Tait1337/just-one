@@ -382,6 +382,6 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/client/index.html');
 });
 
-http.listen(3000, function () {
+http.listen(process.env.PORT || 3000, function () {
     console.log('Just One Webserver is listening on *:3000');
 });
