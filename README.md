@@ -56,8 +56,8 @@ No Tests.
 The most basic option to run the Application is by building the Dockerimage.
 
 ```
-mvn spring-boot:build-image -Pproduction
-docker run -p 8080:8080 -d just-one:1.0.0-SNAPSHOT
+docker build -t just-one:1.0.0-SNAPSHOT .
+docker run --env-file .env -p 8080:8080 -d just-one:1.0.0-SNAPSHOT
 ```
 
 ## Contributing

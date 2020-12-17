@@ -22,6 +22,6 @@ jobs:
           #buildpack: "" #OPTIONAL
           #branch: "" #OPTIONAL and DEFAULT - 'HEAD' (a.k.a your current branch)
           #dontuseforce: false #OPTIONAL and DEFAULT - false
-          #usedocker: true #OPTIONAL and DEFAULT - false
+          usedocker: true #OPTIONAL and DEFAULT - false
           #appdir: "" #OPTIONAL and DEFAULT - "". This is useful if the api you're deploying is in a subfolder
           #docker_heroku_process_type: "" #OPTIONAL and DEFAULT - "web"
