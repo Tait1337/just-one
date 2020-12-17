@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
-      - run: mvn -B package --file pom.xml
+      - run: mvn -B package -Pproduction --file pom.xml
       - uses: akhileshns/heroku-deploy@v3.0.4 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
@@ -22,6 +22,6 @@ jobs:
           #buildpack: "" #OPTIONAL
           #branch: "" #OPTIONAL and DEFAULT - 'HEAD' (a.k.a your current branch)
           #dontuseforce: false #OPTIONAL and DEFAULT - false
-          usedocker: true #OPTIONAL and DEFAULT - false
+          #usedocker: true #OPTIONAL and DEFAULT - false
           #appdir: "" #OPTIONAL and DEFAULT - "". This is useful if the api you're deploying is in a subfolder
           #docker_heroku_process_type: "" #OPTIONAL and DEFAULT - "web"
