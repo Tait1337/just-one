@@ -20,7 +20,6 @@ public class Game {
     private static final int MIN_PLAYER_COUNT = 3;
     private static final int MAX_PLAYER_COUNT = 7;
 
-    private final String gameId;
     private GameState state;
     private boolean roundWon;
     private int points;
@@ -39,7 +38,6 @@ public class Game {
      */
     public Game(String gameId) {
         LOGGER.info("Game " + gameId + " created");
-        this.gameId = gameId;
         this.state = GameState.WAITING;
         this.roundWon = false;
         this.points = 0;

@@ -32,14 +32,6 @@ public class CardDeck {
     }
 
     /**
-     * Get the number of used cards in deck
-     * @return the number
-     */
-    public int getNumberOfUsedCardsInDeck(){
-        return usedCards.length;
-    }
-
-    /**
      * Take a card from the deck
      * @return the card or null if no more cards exists
      */
