@@ -13,12 +13,11 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
-      - name: Analyze
+      - run: mvn -B package -Pproduction --file pom.xml
+      - run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
-      - run: mvn -B package -Pproduction --file pom.xml
       - uses: akhileshns/heroku-deploy@v3.0.4 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
