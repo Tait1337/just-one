@@ -5,6 +5,7 @@ import de.clique.westwood.justone.event.GameEventType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -100,7 +101,7 @@ public class Game {
         deck = new CardDeck();
 
         // choose random starter
-        playerNoOnTurn = (int) Math.round(Math.random() * (this.players.size() - 1));
+        playerNoOnTurn = (int) Math.round(new SecureRandom().nextDouble() * (this.players.size() - 1));
 
         // take first card
         takeACard();

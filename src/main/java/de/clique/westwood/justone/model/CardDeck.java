@@ -1,5 +1,6 @@
 package de.clique.westwood.justone.model;
 
+import java.security.SecureRandom;
 import java.util.*;
 
 /**
@@ -49,7 +50,7 @@ public class CardDeck {
     private void mixCards(){
         Set<Integer> randomDeckIds = new HashSet<>();
         while (randomDeckIds.size() < DECK_SIZE) {
-            int randomNumber = (int) Math.floor(Math.random() * Math.floor(POSSIBLE_CARDS.length));
+            int randomNumber = (int) Math.floor(new SecureRandom().nextDouble() * Math.floor(POSSIBLE_CARDS.length));
             randomDeckIds.add(randomNumber);
         }
         int i = 0;
