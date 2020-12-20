@@ -28,15 +28,15 @@ import static de.clique.westwood.justone.event.GameEventType.PLAYER_CHANGED;
 @Route("waintingroom")
 public class WaitingRoomView extends VerticalLayout implements GameEventListener {
 
-    private SessionStorageService sessionStorageService;
-    private GameService gameService;
+    private final SessionStorageService sessionStorageService;
+    private final GameService gameService;
 
-    private H1 titleLbl;
-    private H3 subtitleLbl;
-    private Grid playerGrid;
-    private Button leaveBtn;
-    private Button startBtn;
-    private HorizontalLayout buttonGrp;
+    private final H1 titleLbl;
+    private final H3 subtitleLbl;
+    private final Grid playerGrid;
+    private final Button leaveBtn;
+    private final Button startBtn;
+    private final HorizontalLayout buttonGrp;
 
     /**
      * Constructor
