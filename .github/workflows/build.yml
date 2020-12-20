@@ -15,6 +15,7 @@ jobs:
           java-version: 11
       - name: Analyze
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
       - run: mvn -B package -Pproduction --file pom.xml
