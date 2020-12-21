@@ -97,7 +97,7 @@ public class WaitingRoomView extends VerticalLayout implements GameEventListener
         sessionStorageService.getPlayer().removeGameEventListener(GAME_STARTED, this);
     }
 
-    private void startGame(ClickEvent e) {
+    private void startGame(ClickEvent<Button> e) {
         try {
             gameService.startGame(sessionStorageService);
         } catch (IllegalStateException ex) {
@@ -107,7 +107,7 @@ public class WaitingRoomView extends VerticalLayout implements GameEventListener
         }
     }
 
-    private void leaveGame(ClickEvent e) {
+    private void leaveGame(ClickEvent<Button> e) {
         removeGameEventListener();
         gameService.leave(sessionStorageService);
         getUI().ifPresent(ui -> ui.access(() ->

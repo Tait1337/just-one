@@ -194,20 +194,21 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                 boolean won = this.gameService.isRoundWon(sessionStorageService);
                 String guess = gameService.getGuess(sessionStorageService);
                 String correct = gameService.getActiveCard(sessionStorageService).getWord(gameService.getChosenWordNo(sessionStorageService));
+                confirmDialog = new Dialog();
+                confirmDialog.setModal(true);
+                confirmDialog.setCloseOnEsc(false);
+                confirmDialog.setCloseOnOutsideClick(false);
+                confirmDialog.setWidth(DIALOG_WIDTH);
+                confirmDialog.setHeight(DIALOG_HEIGHT);
+                Paragraph wonText = null;
+                if (won) {
+                    wonText = new Paragraph("Very good, your team won a point!");
+                }
                 if (sessionStorageService.getPlayer() != this.gameService.getPlayerOnTurn(this.sessionStorageService)) {
                     Player player = gameService.getPlayerOnTurn(sessionStorageService);
                     PlayerComponent playerCmp = playerCmps.get(player);
                     playerCmp.markGuessOrHintProvided(guess);
-                    confirmDialog = new Dialog();
-                    confirmDialog.setModal(true);
-                    confirmDialog.setCloseOnEsc(false);
-                    confirmDialog.setCloseOnOutsideClick(false);
-                    confirmDialog.setWidth(DIALOG_WIDTH);
-                    confirmDialog.setHeight(DIALOG_HEIGHT);
-                    Paragraph wonText;
-                    if (won) {
-                        wonText = new Paragraph("Very good, your team won a point!");
-                    } else {
+                    if (!won) {
                         wonText = new Paragraph("What a pity, your team lost. "+player.getName()+" chose '"+guess+"' but correct was '"+ correct+"'.");
                     }
                     Paragraph confirmText = new Paragraph("Round ended. Next round starts in a few seconds...");
@@ -218,16 +219,7 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                             confirmDialog.open()
                     ));
                 } else {
-                    confirmDialog = new Dialog();
-                    confirmDialog.setModal(true);
-                    confirmDialog.setCloseOnEsc(false);
-                    confirmDialog.setCloseOnOutsideClick(false);
-                    confirmDialog.setWidth(DIALOG_WIDTH);
-                    confirmDialog.setHeight(DIALOG_HEIGHT);
-                    Paragraph wonText;
-                    if (won) {
-                        wonText = new Paragraph("Very good, your team won a point!");
-                    } else {
+                    if (!won) {
                         wonText = new Paragraph("What a pity, your team lost. You chose '"+guess+"' but correct was '"+ correct+"'.");
                     }
                     Paragraph confirmText = new Paragraph("Round ended. Click OK to start the next round.");

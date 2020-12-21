@@ -28,8 +28,8 @@ public class PlayerComponent extends AbsoluteLayout {
     private final TextField guessOrHintInp;
     private final Button acceptBtn;
     private final Button declineBtn;
-    private final static String COLOR_KEY = "color";
-    private final static String COLOR_VALUE = "green";
+    private static final String COLOR_KEY = "color";
+    private static final String COLOR_VALUE = "green";
 
     /**
      * Constructor
