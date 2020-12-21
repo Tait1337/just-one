@@ -13,8 +13,8 @@ import de.clique.westwood.justone.view.layout.AbsoluteLayout;
  */
 public class DeckComponent extends AbsoluteLayout {
 
-    private final SessionStorageService sessionStorageService;
-    private final GameService gameService;
+    private final transient SessionStorageService sessionStorageService;
+    private final transient GameService gameService;
 
     private final Image deckImg;
     private final Paragraph numberOfUnusedCardsLbl;

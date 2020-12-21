@@ -40,8 +40,8 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(GameRoomView.class);
 
-    private final SessionStorageService sessionStorageService;
-    private final GameService gameService;
+    private final transient SessionStorageService sessionStorageService;
+    private final transient GameService gameService;
 
     private final H1 titleLbl;
     private final H3 subtitleLbl;

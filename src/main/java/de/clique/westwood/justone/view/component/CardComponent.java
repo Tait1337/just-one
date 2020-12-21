@@ -14,10 +14,10 @@ import de.clique.westwood.justone.view.layout.AbsoluteLayout;
  */
 public class CardComponent extends AbsoluteLayout {
 
-    private final GameService gameService;
-    private final SessionStorageService sessionStorageService;
-    private final Player player;
-    private Card card;
+    private final transient GameService gameService;
+    private final transient SessionStorageService sessionStorageService;
+    private final transient Player player;
+    private transient Card card;
 
     private Image cardImg;
     private Button word1Btn;
@@ -25,8 +25,8 @@ public class CardComponent extends AbsoluteLayout {
     private Button word3Btn;
     private Button word4Btn;
     private Button word5Btn;
-    private final static String colorKey = "color";
-    private final static String colorValue = "green";
+    private final static String COLOR_KEY = "color";
+    private final static String COLOR_VALUE = "green";
 
     /**
      * Constructor
@@ -93,19 +93,19 @@ public class CardComponent extends AbsoluteLayout {
         getUI().ifPresent(ui -> ui.access(() -> {
             switch (wordNo) {
                 case 1:
-                    word1Btn.getStyle().set(colorKey, colorValue);
+                    word1Btn.getStyle().set(COLOR_KEY, COLOR_VALUE);
                     break;
                 case 2:
-                    word2Btn.getStyle().set(colorKey, colorValue);
+                    word2Btn.getStyle().set(COLOR_KEY, COLOR_VALUE);
                     break;
                 case 3:
-                    word3Btn.getStyle().set(colorKey, colorValue);
+                    word3Btn.getStyle().set(COLOR_KEY, COLOR_VALUE);
                     break;
                 case 4:
-                    word4Btn.getStyle().set(colorKey, colorValue);
+                    word4Btn.getStyle().set(COLOR_KEY, COLOR_VALUE);
                     break;
                 case 5:
-                    word5Btn.getStyle().set(colorKey, colorValue);
+                    word5Btn.getStyle().set(COLOR_KEY, COLOR_VALUE);
                     break;
                 default:
                     throw new IllegalArgumentException("Word number " + wordNo + " does not exists");

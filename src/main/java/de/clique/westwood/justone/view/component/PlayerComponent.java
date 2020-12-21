@@ -18,9 +18,9 @@ import de.clique.westwood.justone.view.layout.AbsoluteLayout;
  */
 public class PlayerComponent extends AbsoluteLayout {
 
-    private final SessionStorageService sessionStorageService;
-    private final GameService gameService;
-    private final Player player;
+    private final transient SessionStorageService sessionStorageService;
+    private final transient GameService gameService;
+    private final transient Player player;
 
     private final H4 playerLbl;
     private final Image panelImg;
@@ -28,8 +28,8 @@ public class PlayerComponent extends AbsoluteLayout {
     private final TextField guessOrHintInp;
     private final Button acceptBtn;
     private final Button declineBtn;
-    private final static String colorKey = "color";
-    private final static String colorValue = "green";
+    private final static String COLOR_KEY = "color";
+    private final static String COLOR_VALUE = "green";
 
     /**
      * Constructor
@@ -115,7 +115,7 @@ public class PlayerComponent extends AbsoluteLayout {
             cardCmp.setVisible(false);
             guessOrHintInp.setVisible(true);
             guessOrHintInp.setValue(value);
-            guessOrHintInp.getStyle().set(colorKey, colorValue);
+            guessOrHintInp.getStyle().set(COLOR_KEY, COLOR_VALUE);
         }));
     }
 
@@ -124,7 +124,7 @@ public class PlayerComponent extends AbsoluteLayout {
      */
     public void markShowAcceptAndDeclineButtons() {
         getUI().ifPresent(ui -> ui.access(() -> {
-            guessOrHintInp.getStyle().remove(colorKey);
+            guessOrHintInp.getStyle().remove(COLOR_KEY);
             acceptBtn.setVisible(true);
             declineBtn.setVisible(true);
         }));
@@ -135,7 +135,7 @@ public class PlayerComponent extends AbsoluteLayout {
      */
     public void markHintAsAccepted() {
         getUI().ifPresent(ui -> ui.access(() -> {
-            guessOrHintInp.getStyle().set(colorKey, colorValue);
+            guessOrHintInp.getStyle().set(COLOR_KEY, COLOR_VALUE);
             acceptBtn.setVisible(false);
             declineBtn.setVisible(false);
         }));
