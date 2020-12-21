@@ -25,8 +25,8 @@ public class CardComponent extends AbsoluteLayout {
     private Button word3Btn;
     private Button word4Btn;
     private Button word5Btn;
-    private final static String COLOR_KEY = "color";
-    private final static String COLOR_VALUE = "green";
+    private static final String COLOR_KEY = "color";
+    private static final String COLOR_VALUE = "green";
 
     /**
      * Constructor
