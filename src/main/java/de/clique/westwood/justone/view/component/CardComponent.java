@@ -25,6 +25,8 @@ public class CardComponent extends AbsoluteLayout {
     private Button word3Btn;
     private Button word4Btn;
     private Button word5Btn;
+    private final static String colorKey = "color";
+    private final static String colorValue = "green";
 
     /**
      * Constructor
@@ -91,20 +93,22 @@ public class CardComponent extends AbsoluteLayout {
         getUI().ifPresent(ui -> ui.access(() -> {
             switch (wordNo) {
                 case 1:
-                    word1Btn.getStyle().set("color", "green");
+                    word1Btn.getStyle().set(colorKey, colorValue);
                     break;
                 case 2:
-                    word2Btn.getStyle().set("color", "green");
+                    word2Btn.getStyle().set(colorKey, colorValue);
                     break;
                 case 3:
-                    word3Btn.getStyle().set("color", "green");
+                    word3Btn.getStyle().set(colorKey, colorValue);
                     break;
                 case 4:
-                    word4Btn.getStyle().set("color", "green");
+                    word4Btn.getStyle().set(colorKey, colorValue);
                     break;
                 case 5:
-                    word5Btn.getStyle().set("color", "green");
+                    word5Btn.getStyle().set(colorKey, colorValue);
                     break;
+                default:
+                    throw new IllegalArgumentException("Word number " + wordNo + " does not exists");
             }
         }));
     }

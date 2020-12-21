@@ -28,6 +28,8 @@ public class PlayerComponent extends AbsoluteLayout {
     private final TextField guessOrHintInp;
     private final Button acceptBtn;
     private final Button declineBtn;
+    private final static String colorKey = "color";
+    private final static String colorValue = "green";
 
     /**
      * Constructor
@@ -113,7 +115,7 @@ public class PlayerComponent extends AbsoluteLayout {
             cardCmp.setVisible(false);
             guessOrHintInp.setVisible(true);
             guessOrHintInp.setValue(value);
-            guessOrHintInp.getStyle().set("color", "green");
+            guessOrHintInp.getStyle().set(colorKey, colorValue);
         }));
     }
 
@@ -122,7 +124,7 @@ public class PlayerComponent extends AbsoluteLayout {
      */
     public void markShowAcceptAndDeclineButtons() {
         getUI().ifPresent(ui -> ui.access(() -> {
-            guessOrHintInp.getStyle().remove("color");
+            guessOrHintInp.getStyle().remove(colorKey);
             acceptBtn.setVisible(true);
             declineBtn.setVisible(true);
         }));
@@ -133,7 +135,7 @@ public class PlayerComponent extends AbsoluteLayout {
      */
     public void markHintAsAccepted() {
         getUI().ifPresent(ui -> ui.access(() -> {
-            guessOrHintInp.getStyle().set("color", "green");
+            guessOrHintInp.getStyle().set(colorKey, colorValue);
             acceptBtn.setVisible(false);
             declineBtn.setVisible(false);
         }));

@@ -31,9 +31,7 @@ public class GameService {
     public void createOrJoinGame(String gameId, String playerName, SessionStorageService sessionStorageService) {
         sessionStorageService.setGameId(gameId);
         sessionStorageService.setPlayer(new Player(playerName));
-        if (!games.containsKey(gameId)) {
-            games.put(gameId, new Game(gameId));
-        }
+        games.putIfAbsent(gameId, new Game(gameId));
         games.get(gameId).join(sessionStorageService.getPlayer());
     }
 

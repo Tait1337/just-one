@@ -33,7 +33,7 @@ public class WaitingRoomView extends VerticalLayout implements GameEventListener
 
     private final H1 titleLbl;
     private final H3 subtitleLbl;
-    private final Grid playerGrid;
+    private final Grid<Player> playerGrid;
     private final Button leaveBtn;
     private final Button startBtn;
     private final HorizontalLayout buttonGrp;
@@ -82,6 +82,8 @@ public class WaitingRoomView extends VerticalLayout implements GameEventListener
                     ui.navigate("gameroom")
                 ));
                 break;
+            default:
+                // do not handle
         }
     }
 

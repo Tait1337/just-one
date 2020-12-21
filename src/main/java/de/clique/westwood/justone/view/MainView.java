@@ -35,11 +35,9 @@ public class MainView extends VerticalLayout {
      */
     public MainView(SessionStorageService sessionStorageService, GameService gameService) {
         logo = new Image("logo.png", "logo");
-        logo.addClickListener(e -> {
-            getUI().ifPresent(ui -> ui.access(() ->
-                ui.getPage().executeJs("window.open('https://youtu.be/IzXhC_NQct');")
-            ));
-        });
+        logo.addClickListener(e -> getUI().ifPresent(ui -> ui.access(() ->
+            ui.getPage().executeJs("window.open('https://youtu.be/IzXhC_NQct');")
+        )));
         join = new JoinComponent(sessionStorageService, gameService);
         footer = new Paragraph(new Html("<span>© 2020 Oliver Tribess | powered by <a href=\"https://vaadin.com\" target=\"blank\">Vaadin</a> | support the board game publisher <a href=\"https://asmodee.com\" target=\"blank\">Asmodée</a></span>"));
         footer.getStyle().set("position", "absolute");

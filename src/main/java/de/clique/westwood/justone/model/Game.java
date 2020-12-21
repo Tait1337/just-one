@@ -38,7 +38,7 @@ public class Game {
      * @param gameId the game id
      */
     public Game(String gameId) {
-        LOGGER.info("Game " + gameId + " created");
+        LOGGER.info("Game {} created", gameId);
         this.state = GameState.WAITING;
         this.roundWon = false;
         this.points = 0;

@@ -164,7 +164,7 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                     Boolean hint = hintDecisions.get(player);
                     if (hint != null) {
                         PlayerComponent playerCmp = playerCmps.get(player);
-                        if (hint) {
+                        if (Boolean.TRUE.equals(hint)) {
                             playerCmp.markHintAsAccepted();
                         } else {
                             playerCmp.markHintAsDeclined();
@@ -177,7 +177,7 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                     hintDecisions = gameService.getProvidedHintAcceptedOrRejected(sessionStorageService);
                     for (Player player : gameService.getPlayersForGame(sessionStorageService)) {
                         if (player != this.gameService.getPlayerOnTurn(this.sessionStorageService)) {
-                            if (hintDecisions.get(player)) {
+                            if (Boolean.TRUE.equals(hintDecisions.get(player))) {
                                 String hint = gameService.getHint(sessionStorageService, player);
                                 PlayerComponent playerCmp = playerCmps.get(player);
                                 playerCmp.markGuessOrHintProvided(hint);
@@ -256,27 +256,29 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                 getUI().ifPresent(ui -> ui.access(() -> confirmDialog.close()));
                 updatePointsAndPlayerOnTurn();
                 removeGameEventListener();
-                Dialog confirmDialog = new Dialog();
-                confirmDialog.setModal(true);
-                confirmDialog.setCloseOnEsc(false);
-                confirmDialog.setCloseOnOutsideClick(false);
-                confirmDialog.setWidth("400px");
-                confirmDialog.setHeight("150px");
+                Dialog gameEndConfirmDialog = new Dialog();
+                gameEndConfirmDialog.setModal(true);
+                gameEndConfirmDialog.setCloseOnEsc(false);
+                gameEndConfirmDialog.setCloseOnOutsideClick(false);
+                gameEndConfirmDialog.setWidth("400px");
+                gameEndConfirmDialog.setHeight("150px");
                 Text confirmText = new Text("Game end! Your team earned " + gameService.getPoints(sessionStorageService) + " point(s).");
                 Button confirmButton = new Button("OK", event -> getUI().ifPresent(ui -> ui.access(() -> {
-                    confirmDialog.close();
+                    gameEndConfirmDialog.close();
                     gameService.leave(sessionStorageService);
                     ui.navigate("");
                 })));
                 AbsoluteLayout dialogLayout = new AbsoluteLayout(confirmText, confirmButton);
                 dialogLayout.getStyle().set("margin", "10px");
                 dialogLayout.layoutAbsolute(confirmButton, null, null, "10px", "10px");
-                confirmDialog.add(dialogLayout);
+                gameEndConfirmDialog.add(dialogLayout);
                 getUI().ifPresent(ui -> ui.access(() -> {
-                    confirmDialog.open();
+                    gameEndConfirmDialog.open();
                     confirmButton.focus();
                 }));
                 break;
+            default:
+                // do not handle
         }
     }
 
