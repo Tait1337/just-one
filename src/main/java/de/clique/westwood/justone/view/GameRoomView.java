@@ -48,8 +48,12 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
     private final H3 pointsLbl;
     private final Button leaveBtn;
     private final DeckComponent deckCmp;
-    private final Map<Player, PlayerComponent> playerCmps;
+    private final transient Map<Player, PlayerComponent> playerCmps;
     private Dialog confirmDialog;
+    private static final String MARGIN_TEXT = "margin";
+    private static final String DIALOG_WIDTH = "400px";
+    private static final String DIALOG_HEIGHT = "180px";
+    private static final String DIALOG_MARGIN = "10px";
 
     /**
      * Construct
@@ -107,7 +111,7 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
      */
     @Override
     public void onGameEvent(GameEvent gameEvent) {
-        LOGGER.info(sessionStorageService.getPlayer().getName() + " received GameEvent: " + gameEvent.getType());
+        LOGGER.info("{} received GameEvent: {}", sessionStorageService.getPlayer().getName(), gameEvent.getType());
         switch (gameEvent.getType()) {
             case PLAYER_CHANGED: // Player left the game
                 getUI().ifPresent(ui -> ui.access(() ->
@@ -176,12 +180,10 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                 if (sessionStorageService.getPlayer() == this.gameService.getPlayerOnTurn(this.sessionStorageService)) {
                     hintDecisions = gameService.getProvidedHintAcceptedOrRejected(sessionStorageService);
                     for (Player player : gameService.getPlayersForGame(sessionStorageService)) {
-                        if (player != this.gameService.getPlayerOnTurn(this.sessionStorageService)) {
-                            if (Boolean.TRUE.equals(hintDecisions.get(player))) {
-                                String hint = gameService.getHint(sessionStorageService, player);
-                                PlayerComponent playerCmp = playerCmps.get(player);
-                                playerCmp.markGuessOrHintProvided(hint);
-                            }
+                        if (player != this.gameService.getPlayerOnTurn(this.sessionStorageService) && Boolean.TRUE.equals(hintDecisions.get(player))) {
+                            String hint = gameService.getHint(sessionStorageService, player);
+                            PlayerComponent playerCmp = playerCmps.get(player);
+                            playerCmp.markGuessOrHintProvided(hint);
                         }
                     }
                     PlayerComponent playerCmp = playerCmps.get(sessionStorageService.getPlayer());
@@ -200,8 +202,8 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                     confirmDialog.setModal(true);
                     confirmDialog.setCloseOnEsc(false);
                     confirmDialog.setCloseOnOutsideClick(false);
-                    confirmDialog.setWidth("400px");
-                    confirmDialog.setHeight("180px");
+                    confirmDialog.setWidth(DIALOG_WIDTH);
+                    confirmDialog.setHeight(DIALOG_HEIGHT);
                     Paragraph wonText;
                     if (won) {
                         wonText = new Paragraph("Very good, your team won a point!");
@@ -210,7 +212,7 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                     }
                     Paragraph confirmText = new Paragraph("Round ended. Next round starts in a few seconds...");
                     AbsoluteLayout dialogLayout = new AbsoluteLayout(wonText, confirmText);
-                    dialogLayout.getStyle().set("margin", "10px");
+                    dialogLayout.getStyle().set(MARGIN_TEXT, DIALOG_MARGIN);
                     confirmDialog.add(dialogLayout);
                     getUI().ifPresent(ui -> ui.access(() ->
                             confirmDialog.open()
@@ -220,8 +222,8 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                     confirmDialog.setModal(true);
                     confirmDialog.setCloseOnEsc(false);
                     confirmDialog.setCloseOnOutsideClick(false);
-                    confirmDialog.setWidth("400px");
-                    confirmDialog.setHeight("180px");
+                    confirmDialog.setWidth(DIALOG_WIDTH);
+                    confirmDialog.setHeight(DIALOG_HEIGHT);
                     Paragraph wonText;
                     if (won) {
                         wonText = new Paragraph("Very good, your team won a point!");
@@ -231,7 +233,7 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                     Paragraph confirmText = new Paragraph("Round ended. Click OK to start the next round.");
                     Button confirmButton = new Button("OK", event -> gameService.startNextRound(sessionStorageService));
                     AbsoluteLayout dialogLayout = new AbsoluteLayout(wonText, confirmText, confirmButton);
-                    dialogLayout.getStyle().set("margin", "10px");
+                    dialogLayout.getStyle().set(MARGIN_TEXT, DIALOG_MARGIN);
                     dialogLayout.layoutAbsolute(confirmButton, null, null, "10px", "10px");
                     confirmDialog.add(dialogLayout);
                     getUI().ifPresent(ui -> ui.access(() -> {
@@ -260,8 +262,8 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                 gameEndConfirmDialog.setModal(true);
                 gameEndConfirmDialog.setCloseOnEsc(false);
                 gameEndConfirmDialog.setCloseOnOutsideClick(false);
-                gameEndConfirmDialog.setWidth("400px");
-                gameEndConfirmDialog.setHeight("150px");
+                gameEndConfirmDialog.setWidth(DIALOG_WIDTH);
+                gameEndConfirmDialog.setHeight(DIALOG_HEIGHT);
                 Text confirmText = new Text("Game end! Your team earned " + gameService.getPoints(sessionStorageService) + " point(s).");
                 Button confirmButton = new Button("OK", event -> getUI().ifPresent(ui -> ui.access(() -> {
                     gameEndConfirmDialog.close();
@@ -269,7 +271,7 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                     ui.navigate("");
                 })));
                 AbsoluteLayout dialogLayout = new AbsoluteLayout(confirmText, confirmButton);
-                dialogLayout.getStyle().set("margin", "10px");
+                dialogLayout.getStyle().set(MARGIN_TEXT, DIALOG_MARGIN);
                 dialogLayout.layoutAbsolute(confirmButton, null, null, "10px", "10px");
                 gameEndConfirmDialog.add(dialogLayout);
                 getUI().ifPresent(ui -> ui.access(() -> {

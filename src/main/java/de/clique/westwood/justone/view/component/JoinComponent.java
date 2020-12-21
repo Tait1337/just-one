@@ -18,8 +18,8 @@ import de.clique.westwood.justone.view.WaitingRoomView;
  */
 public class JoinComponent extends VerticalLayout {
 
-    private final SessionStorageService sessionStorageService;
-    private final GameService gameService;
+    private final transient SessionStorageService sessionStorageService;
+    private final transient GameService gameService;
     private final TextField username;
     private final TextField gameId;
     private final Button start;
