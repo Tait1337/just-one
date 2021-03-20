@@ -45,11 +45,11 @@ Join a game with up to 7 player.
 
 ### Configuration
 
-Within [src/main/resources/carddeck.csv](carddeck.csv) you can modify game cards.
+Within [carddeck.csv](src/main/resources/carddeck.csv) you can modify game cards.
 
 ## Running the tests
 
-No Tests.
+No Tests exist.
 
 ## Deployment
 
