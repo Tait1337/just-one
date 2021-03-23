@@ -118,6 +118,7 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
                         Notification.show("Player has left the game! Game must be canceled!")
                 ));
                 removeGameEventListener();
+                gameService.leave(sessionStorageService);
                 getUI().ifPresent(ui -> ui.access(() ->
                         ui.navigate("")
                 ));

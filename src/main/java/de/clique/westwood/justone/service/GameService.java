@@ -1,6 +1,8 @@
 package de.clique.westwood.justone.service;
 
 import de.clique.westwood.justone.model.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -12,6 +14,8 @@ import java.util.Map;
  */
 @Service
 public class GameService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(GameService.class);
 
     private final Map<String, Game> games;
 
@@ -46,8 +50,10 @@ public class GameService {
                 .filter(player -> player.getName().equals(playername))
                 .findAny()
                 .ifPresent(player -> games.get(gameId).leave(player));
-        if (games.get(gameId).getPlayers().isEmpty()){
+        Game game = games.get(gameId);
+        if (game != null && game.getPlayers().isEmpty()){
             games.remove(gameId);
+            LOGGER.info("Game {} removed", gameId);
         }
     }
 
