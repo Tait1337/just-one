@@ -232,7 +232,7 @@ public class Game {
         if (word == null || word.isEmpty()) {
             throw new IllegalArgumentException(word + " is no valid guess");
         }
-        guess = word;
+        guess = word.trim();
         roundEnd();
         sendGameEvent(new GameEvent(GameEventType.ACTION_GUESS_PROVIDED));
     }
