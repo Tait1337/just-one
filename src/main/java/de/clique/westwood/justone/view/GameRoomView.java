@@ -89,9 +89,9 @@ public class GameRoomView extends AbsoluteLayout implements GameEventListener {
             playerCmps.put(player, playerComponent);
         }
 
-        layoutAbsolute(titleLbl, "0px", "50px", null, null);
-        layoutAbsolute(pointsLbl, "100px", "50px", null, null);
-        layoutAbsolute(subtitleLbl, "130px", "50px", null, null);
+        layoutAbsolute(titleLbl, "-20px", "50px", null, null);
+        layoutAbsolute(pointsLbl, "90px", "50px", null, null);
+        layoutAbsolute(subtitleLbl, "120px", "50px", null, null);
         layoutAbsolute(leaveBtn, "10px", null, "10px", null);
         layoutAbsolute(deckCmp, "30%", "40%", null, null);
 

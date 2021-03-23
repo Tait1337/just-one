@@ -77,7 +77,6 @@ public class PlayerComponent extends AbsoluteLayout {
             }
         }
 
-        layoutAbsolute(playerLbl, "0px", "0px", null, null);
         layoutAbsolute(panelImg, "50px", "0px", null, null);
         layoutAbsolute(cardCmp, "-50px", "0px", null, null);
         layoutAbsolute(guessOrHintInp, "60px", "40px", null, null);
