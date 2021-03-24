@@ -101,6 +101,7 @@ public class PlayerComponent extends AbsoluteLayout {
         getUI().ifPresent(ui -> ui.access(() -> {
             cardCmp.setVisible(false);
             guessOrHintInp.setVisible(true);
+            guessOrHintInp.setReadOnly(false);
             guessOrHintInp.focus();
         }));
     }
@@ -114,6 +115,7 @@ public class PlayerComponent extends AbsoluteLayout {
             cardCmp.setVisible(false);
             guessOrHintInp.setVisible(true);
             guessOrHintInp.setValue(value);
+            guessOrHintInp.setReadOnly(true);
             guessOrHintInp.getStyle().set(COLOR_KEY, COLOR_VALUE);
         }));
     }
@@ -162,12 +164,12 @@ public class PlayerComponent extends AbsoluteLayout {
 
     private void submitGuess(String value) {
         gameService.provideGuess(sessionStorageService, value);
-        getUI().ifPresent(ui -> ui.access(() -> guessOrHintInp.setEnabled(false)));
+        getUI().ifPresent(ui -> ui.access(() -> guessOrHintInp.setReadOnly(true)));
     }
 
     private void submitHint(String value) {
         gameService.provideHint(sessionStorageService, value);
-        getUI().ifPresent(ui -> ui.access(() -> guessOrHintInp.setEnabled(false)));
+        getUI().ifPresent(ui -> ui.access(() -> guessOrHintInp.setReadOnly(true)));
     }
 
 }
