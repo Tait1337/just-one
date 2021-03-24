@@ -116,7 +116,6 @@ public class PlayerComponent extends AbsoluteLayout {
             guessOrHintInp.setVisible(true);
             guessOrHintInp.setValue(value);
             guessOrHintInp.setReadOnly(true);
-            guessOrHintInp.getStyle().set(COLOR_KEY, COLOR_VALUE);
         }));
     }
 
