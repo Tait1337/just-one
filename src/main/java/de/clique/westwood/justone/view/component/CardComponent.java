@@ -91,20 +91,30 @@ public class CardComponent extends AbsoluteLayout {
      */
     public void markChosenWord(int wordNo) {
         getUI().ifPresent(ui -> ui.access(() -> {
+            word1Btn.setVisible(false);
+            word2Btn.setVisible(false);
+            word3Btn.setVisible(false);
+            word4Btn.setVisible(false);
+            word5Btn.setVisible(false);
             switch (wordNo) {
                 case 1:
+                    word1Btn.setVisible(true);
                     word1Btn.getStyle().set(COLOR_KEY, COLOR_VALUE);
                     break;
                 case 2:
+                    word2Btn.setVisible(true);
                     word2Btn.getStyle().set(COLOR_KEY, COLOR_VALUE);
                     break;
                 case 3:
+                    word3Btn.setVisible(true);
                     word3Btn.getStyle().set(COLOR_KEY, COLOR_VALUE);
                     break;
                 case 4:
+                    word4Btn.setVisible(true);
                     word4Btn.getStyle().set(COLOR_KEY, COLOR_VALUE);
                     break;
                 case 5:
+                    word5Btn.setVisible(true);
                     word5Btn.getStyle().set(COLOR_KEY, COLOR_VALUE);
                     break;
                 default:
