@@ -11,4 +11,4 @@ LABEL maintainer="tait1337"
 WORKDIR /app
 COPY ./target/just-one-1.0.0-SNAPSHOT.jar ./app.jar
 EXPOSE $PORT
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Xmx512m", "-jar", "app.jar"]
