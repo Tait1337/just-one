@@ -4,12 +4,14 @@ import com.vaadin.flow.spring.annotation.VaadinSessionScope;
 import de.clique.westwood.justone.model.Player;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+
 /**
  * {@link Player} Session.
  */
 @Component
 @VaadinSessionScope
-public class SessionStorageService {
+public class SessionStorageService implements Serializable {
 
     private String gameId;
     private Player player;
