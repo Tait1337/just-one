@@ -22,7 +22,7 @@ import de.clique.westwood.justone.view.component.JoinComponent;
         description = "Web version of Asmodée's Just One board game",
         enableInstallPrompt = false)
 @Theme(value = Material.class)
-public class MainView extends VerticalLayout {
+public class MainView extends VerticalLayout  {
 
     private final Image logo;
     private final JoinComponent join;
@@ -36,7 +36,7 @@ public class MainView extends VerticalLayout {
     public MainView(SessionStorageService sessionStorageService, GameService gameService) {
         logo = new Image("logo.png", "logo");
         logo.addClickListener(e -> getUI().ifPresent(ui -> ui.access(() ->
-            ui.getPage().executeJs("window.open('https://youtu.be/IzXhC_NQct');")
+            ui.getPage().executeJs("window.open('https://youtu.be/IzXhC_NQctg');")
         )));
         join = new JoinComponent(sessionStorageService, gameService);
         footer = new Paragraph(new Html("<span>© 2020 Oliver Tribess | powered by <a href=\"https://vaadin.com\" target=\"blank\">Vaadin</a> | support the board game publisher <a href=\"https://asmodee.com\" target=\"blank\">Asmodée</a></span>"));
