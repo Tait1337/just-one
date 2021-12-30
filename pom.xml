@@ -12,7 +12,7 @@
 
     <properties>
         <java.version>11</java.version>
-        <vaadin.version>14.6.2</vaadin.version>
+        <vaadin.version>14.6.8</vaadin.version>
         <sonar.projectKey>Tait1337_just-one</sonar.projectKey>
         <sonar.organization>tait1337</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
