@@ -3,7 +3,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.4</version>
+        <version>2.6.7</version>
     </parent>
     <groupId>de.clique.westwood.justone</groupId>
     <artifactId>just-one</artifactId>
@@ -11,8 +11,8 @@
     <name>just-one</name>
 
     <properties>
-        <java.version>11</java.version>
-        <vaadin.version>14.4.10</vaadin.version>
+        <java.version>17</java.version>
+        <vaadin.version>14.8.9</vaadin.version>
         <sonar.projectKey>Tait1337_just-one</sonar.projectKey>
         <sonar.organization>tait1337</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
