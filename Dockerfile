@@ -19,7 +19,7 @@ LABEL maintainer="tait1337"
 WORKDIR /app
 
 # Copy the JAR file from the build stage
-COPY --from=builder ./target/just-one-1.0.0-SNAPSHOT.jar ./app.jar
+COPY --from=builder /build/target/just-one-1.0.0-SNAPSHOT.jar ./app.jar
 EXPOSE $PORT
 
 ENTRYPOINT ["java", "-Xmx512m", "-jar", "app.jar"]
