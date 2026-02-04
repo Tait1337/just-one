@@ -7,8 +7,14 @@
 FROM eclipse-temurin:17-jre-alpine
 LABEL maintainer="tait1337"
 
-# App
+# Stage 1: Build
+FROM maven:3.8.6-eclipse-temurin-17 as builder
+WORKDIR /build
+COPY . .
+RUN mvn clean package
+
+# Stage 2: Runtime
 WORKDIR /app
-COPY ./target/just-one-1.0.0-SNAPSHOT.jar ./app.jar
+COPY --from=builder ./target/just-one-1.0.0-SNAPSHOT.jar ./app.jar
 EXPOSE $PORT
 ENTRYPOINT ["java", "-Xmx512m", "-jar", "app.jar"]
